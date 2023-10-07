@@ -26,6 +26,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Azure CLI
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+        if: runner.os == 'Linux'
+
+      - name: Check Azure CLI Version
+        run: |
+          az --version
+          az upgrade --yes
+        if: runner.os == 'Linux'
+
       - name: Azure Login
         uses: azure/login@v1
         with:
