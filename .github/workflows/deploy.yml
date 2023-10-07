@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      AZURE_WEBAPP_NAME: testing-deployment-with-azure
+      AZURE_RESOURCE_GROUP: testing-deployment-with-azure
+      GH_REPO: paudel.prashant/testing-deployment-with-azure
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,11 +26,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build and deploy
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: AZUREAPPSERVICE_PUBLISHPROFILE_TESTING_APP_DEPLOYMENT
+
+      - name: Deploy to Azure
         run: |
           chmod +x deploy.sh
           ./deploy.sh
-        env:
-          AZURE_WEBAPP_NAME: testing-app-deployment
-          AZURE_RESOURCE_GROUP: testing-app-deployment
-          GH_REPO: paudel-prashant/testing-deployment-with-azure
