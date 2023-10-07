@@ -12,7 +12,7 @@ jobs:
     env:
       AZURE_WEBAPP_NAME: testing-deployment-with-azure
       AZURE_RESOURCE_GROUP: testing-deployment-with-azure
-      GH_REPO: paudel.prashant/testing-deployment-with-azure
+      GH_REPO: paudel-prashant/testing-deployment-with-azure
 
     steps:
       - name: Checkout code
