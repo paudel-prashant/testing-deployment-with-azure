@@ -38,7 +38,7 @@ jobs:
         if: runner.os == 'Linux'
 
       - name: Azure Login
-        uses: azure/login@v1
+        uses: azure/actions/login@v1
         with:
           creds: AZUREAPPSERVICE_PUBLISHPROFILE_TESTING_APP_DEPLOYMENT
 
